@@ -31,8 +31,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   <!-- jquery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- 폰트아섬 -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- swiper -->
+  <link rel="stylesheet" href="./css/swiper-bundle.min.css">
 
 
   <style>
@@ -43,17 +45,15 @@
 
 
     .main_btn_wrap{min-width: 1200px; width: 100%; max-width: 1920px; overflow: hidden; box-sizing: border-box;;}
-    .main_btn_wrap:after{content:""; display: block; clear: both;}
-    .main_btn_wrap>div{width: 33.3%; float: left; position: relative;}
+    .main_btn_wrap>div{width: 33.33333333333333%; float: left; position: relative;}
     .main_btn_wrap>div>img{width: 100%; box-sizing: border-box; overflow: hidden;}
-    .main_list_wrap h2{font-size: 60px; color: #fff; text-align: center; cursor: pointer; line-height: 5rem;}
-    .about_me,.desigin{position: absolute; top:50%; left:24%;}
-    .publising{position: absolute; top:40%; left:24%;}
-
-    .aboutme_more,.works_more{position: fixed; width: 100%; height: 927px; background: #fff; top:-100%; left:-100%; z-index: 999; overflow: hidden; max-height: 100%; -ms-overflow-style: none;}
-    .aboutme_more::-webkit-scrollbar,.works_more::-webkit-scrollbar{display:none;}
+    .main_list_wrap h2{width: 100%; font-size: 60px; color: #fff; text-align: center; cursor: pointer; line-height: 5rem; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);}
+    
+    
+    .aboutme_more,.works_more,.desigin_more{position: fixed; left:-100%; top:0; width: 100%; height: 927px; background: #fff; z-index: 999; overflow: hidden; max-height: 100%; -ms-overflow-style: none; transition: 0.3s;}
+    .aboutme_more::-webkit-scrollbar,.works_more::-webkit-scrollbar,.desigin_more::-webkit-scrollbar{display:none;}
     .on2{top:0;left: 0;}
-    .aboutme_more .x_btn,.works_more .x_btn{position: absolute; top:20px; right: 5%; cursor: pointer;}
+    .aboutme_more .x_btn,.works_more .x_btn,.desigin_more .x_btn{position: absolute; top:20px; right: 5%; cursor: pointer;}
     .profile_img,.profile_wrap{width: 50%; float: left; box-sizing: border-box;}
     .profile_wrap > div h5{color:#766e6e;font-size: 18px; border-bottom: 1px solid #e1e1e1; font-weight: bold; padding-bottom: 10px; width: 80%;}
     .profile_wrap p{color:#4e4e4e;margin-top: 10px;font-size: 14px;}
@@ -63,23 +63,28 @@
     .profile_wrap>div{margin-bottom: 5%;}
     .aboutme_more .center{margin: 0 auto; width: 50%; text-align: center;}
     .aboutme_more .profile_img img{width: 30vw; min-width: 180px; max-width: 400px; text-align: center;}
-    .aboutme_more .inner,.works_more .inner{margin-top: 2%;}
+    .aboutme_more .inner{margin-top: 2%;}
 
-    
-    .works_more .inner>.swiper-container{width: 100%; height: 100%;}
-    .works_more .inner>.swiper-slide{}
-    
+
+    .swiper-container .swiper-slide>img{height: 500px;}
+    .swiper-container .swiper-wrapper, .swiper-container1 .swiper-wrapper{text-align: center;}
+    .swiper-container1 .swiper-slide>img{height: 800px;}
+    .swiper-pagination{top: 80%;}
+
+    .btn{text-align: center; padding-top: 50px;}
+    button{font-size: 35px; background-color: #fff; border: 2px solid #69322f; outline: none; border-radius: 5px; color: #69322f; cursor: pointer;}
+    button:hover{color: #ccc; border: 2px solid #ccc;}
   </style>
 </head>
 <body>
-  <div class="main_btn_wrap">
+  <div class="main_btn_wrap clearfix">
     <div class="main_btn01 about">
       <img src="./images/main_01.gif" alt="">
       <div class="main_list_wrap">
         <h2 class="about_me">About Me</h2>
       </div>
       <!--about me-->
-        <div class="aboutme_more clearfix">
+      <div class="aboutme_more clearfix">
         <div class="x_btn">
           <img src="images/x_btn.png" alt="닫기">
         </div>
@@ -100,7 +105,7 @@
                     <tbody>
                         <tr>
                             <td>Name</td>
-                            <td>김현희(Hyeonhee) ,Kim)</td>
+                            <td>김현희(Hyeonhee, Kim)</td>
                         </tr>
                         <tr>
                             <td>Birth</td>
@@ -123,13 +128,18 @@
                 </div>
                 <div class=skill>
                   <h5>SKILL</h5>
-                  <p>HTML5<br><br>CSS3<br><br>Photoshop<br><br>Illustration</p>
+                  <p>
+                    HTML5<br><br>
+                    CSS3<br><br>
+                    Photoshop<br><br>
+                    Illustration</p>
               </div>
             </div>
         </div>
-        </div>
+      </div>
       <!--about me-->
     </div>
+
     <div class="main_btn02 work">
       <img src="./images/main_02.gif" alt="">
       <div class="main_list_wrap">
@@ -148,25 +158,64 @@
           <!-- Swiper -->
           <div class="swiper-container">
             <div class="swiper-wrapper">
-              <div class="swiper-slide">Slide 1</div>
-              <div class="swiper-slide">Slide 2</div>
-              <div class="swiper-slide">Slide 3</div>
-              <div class="swiper-slide">Slide 4</div>
-              <div class="swiper-slide">Slide 5</div>
+              <div class="swiper-slide">
+                <img src="./images/00.jpg" alt="">
+                  <a href="https://khh1261.github.io/indigo/" target="_blank">
+                    <div class="btn"><button>view</button></div>
+                  </a>
+              </div>
+              
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            
+          </div>
+        </div>
+      <!-- publising -->
+      </div>
+    </div>
+
+    <div class="main_btn03 other_works">
+      <img src="./images/main_03.gif" alt="">
+      <div class="main_list_wrap">
+        <h2 class="desigin">Other Design</h2>
+      </div>
+      <!-- desigin -->
+      <div class="desigin_more clearfix">
+        <div class="x_btn">
+          <img src="images/x_btn.png" alt="닫기">
+        </div>
+        <div class="titles">
+          <h1 class="title">Other works</h1>
+            <h3 class="sub_title">Web-page design · printing design</h3>
+        </div>
+        <div class="inner">
+          <!-- Swiper -->
+          <div class="swiper-container1">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="./images/1.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./images/2.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./images/3.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./images/4.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./images/5.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./images/6.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./images/7.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./images/8.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./images/9.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./images/10.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./images/11.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./images/12.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./images/13.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./images/14.jpg" alt=""></div>
             </div>
             <!-- Add Scrollbar -->
             <div class="swiper-scrollbar"></div>
           </div>
         </div>
       </div>
-      <!-- publising -->
+      <!-- desigin -->
     </div>
-    <div class="main_btn03 other_works">
-      <img src="./images/main_03.gif" alt="">
-      <div class="main_list_wrap">
-        <h2 class="desigin">Other Design</h2>
-      </div>
-    </div>
+
   </div>
 </body>
 <script src="./js/swiper-bundle.min.js"></script>
@@ -180,7 +229,7 @@
     $('.aboutme_more').removeClass('on2');
   });
 
-//=== swiper pop ===//
+//=== publising pop ===//
   $('.publising').click(function () {
     $('.works_more').addClass('on2');
   });
@@ -188,13 +237,32 @@
   $('.works_more .x_btn').click(function () {
     $('.works_more').removeClass('on2');
   });
+
+  //=== desigin pop ===//
+  $('.desigin').click(function () {
+    $('.desigin_more').addClass('on2');
+  });
+
+  $('.desigin_more .x_btn').click(function () {
+    $('.desigin_more').removeClass('on2');
+  });
   
   //=== swiper slide ===//
   var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+        dynamicBullets: true,
+      },
+    });
+
+  var swiper = new Swiper('.swiper-container1', {
     scrollbar: {
       el: '.swiper-scrollbar',
       hide: true,
     },
+    autoplay: {
+        delay:3000,
+    }
   });
 
 
